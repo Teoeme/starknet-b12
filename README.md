@@ -1,7 +1,7 @@
 # Starknet Basecamp 12 - Exercise Solutions
 
 <div align="center">
-  <img src="https://starknet.io/images/starknet-logo.svg" alt="Starknet Logo" width="200"/>
+  <img src="https://github.com/Teoeme/starknet-b12/tree/main/assets/starknet-logo.png" alt="Starknet Logo" width="200"/>
 </div>
 
 ## Overview
