@@ -7,7 +7,7 @@ const deployedContracts = {
   devnet: {
     Counter: {
       address:
-        "0x3668b616a2ec4413d44526dcc07439a8adff6db43e1c458c6862cb6210a6dca",
+        "0x56c1659508ba0c4a69d1636604a4cf0196c9daef7d98c1ec6dad8bbfff7be41",
       abi: [
         {
           type: "impl",
@@ -18,6 +18,17 @@ const deployedContracts = {
           type: "interface",
           name: "contracts::Counter::ICounter",
           items: [
+            {
+              type: "function",
+              name: "get_counter",
+              inputs: [],
+              outputs: [
+                {
+                  type: "core::integer::u32",
+                },
+              ],
+              state_mutability: "view",
+            },
             {
               type: "function",
               name: "increase_counter",
@@ -34,7 +45,14 @@ const deployedContracts = {
             },
             {
               type: "function",
-              name: "get_counter",
+              name: "reset_counter",
+              inputs: [],
+              outputs: [],
+              state_mutability: "external",
+            },
+            {
+              type: "function",
+              name: "get_win_number",
               inputs: [],
               outputs: [
                 {
@@ -43,18 +61,11 @@ const deployedContracts = {
               ],
               state_mutability: "view",
             },
-            {
-              type: "function",
-              name: "reset_counter",
-              inputs: [],
-              outputs: [],
-              state_mutability: "external",
-            },
           ],
         },
         {
           type: "impl",
-          name: "OwneableMixinImpl",
+          name: "OwnableMixinImpl",
           interface_name: "openzeppelin_access::ownable::interface::OwnableABI",
         },
         {
@@ -117,12 +128,12 @@ const deployedContracts = {
           name: "constructor",
           inputs: [
             {
-              name: "init_value",
-              type: "core::integer::u32",
-            },
-            {
               name: "owner",
               type: "core::starknet::contract_address::ContractAddress",
+            },
+            {
+              name: "init_value",
+              type: "core::integer::u32",
             },
           ],
         },
@@ -141,6 +152,18 @@ const deployedContracts = {
         {
           type: "event",
           name: "contracts::Counter::Counter::Decreased",
+          kind: "struct",
+          members: [
+            {
+              name: "account",
+              type: "core::starknet::contract_address::ContractAddress",
+              kind: "data",
+            },
+          ],
+        },
+        {
+          type: "event",
+          name: "contracts::Counter::Counter::Reset",
           kind: "struct",
           members: [
             {
@@ -217,6 +240,11 @@ const deployedContracts = {
               kind: "nested",
             },
             {
+              name: "Reset",
+              type: "contracts::Counter::Counter::Reset",
+              kind: "nested",
+            },
+            {
               name: "OwnableEvent",
               type: "openzeppelin_access::ownable::ownable::OwnableComponent::Event",
               kind: "flat",
@@ -225,7 +253,7 @@ const deployedContracts = {
         },
       ],
       classHash:
-        "0x477bcf2ca66ddf35a2c096e5c2560135646dccc5e05f321b53b0010812cd42e",
+        "0x7c2fce5fad66fd492273e7658ef1223b81a20757d5d0519af212c3f06fb184e",
     },
   },
 } as const;
